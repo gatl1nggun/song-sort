@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Song Sorter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="app-header">
+    <h1 id="app-title">Song Sorter</h1>
+    <span id="app-version" data-testid="app-version"></span>
+  </header>
+
+  <!-- Connect panel: shown until songs are loaded -->
+  <section id="connect-panel" data-testid="connect-panel">
+    <h2 id="connect-heading">Load your songs</h2>
+    <p id="connect-help">
+      Use demo data to try the page without a Spotify account, or paste your
+      Spotify app's Client ID to load your Liked Songs.
+    </p>
+    <div class="row">
+      <button id="btn-demo" data-testid="btn-demo" type="button">Use demo data</button>
+    </div>
+    <div class="row">
+      <label for="input-client-id" id="label-client-id">Spotify Client ID</label>
+      <input id="input-client-id" data-testid="input-client-id" type="text" autocomplete="off" placeholder="32-character Client ID">
+      <button id="btn-connect" data-testid="btn-connect" type="button">Connect to Spotify</button>
+    </div>
+    <p id="redirect-hint" class="hint">
+      Redirect URI to register in the Spotify dashboard:
+      <code id="redirect-uri" data-testid="redirect-uri"></code>
+    </p>
+  </section>
+
+  <!-- Status / error line -->
+  <p id="status-message" data-testid="status-message" role="status" aria-live="polite"></p>
+
+  <!-- Songs panel: shown once songs are loaded -->
+  <section id="songs-panel" data-testid="songs-panel" hidden>
+    <div id="toolbar" class="toolbar">
+      <label for="input-search" id="label-search">Search</label>
+      <input id="input-search" data-testid="input-search" type="search" placeholder="Title, artist or album">
+
+      <label for="select-sort" id="label-sort">Sort by</label>
+      <select id="select-sort" data-testid="select-sort">
+        <option value="added_at">Date added</option>
+        <option value="name">Title</option>
+        <option value="artist">Artist</option>
+        <option value="album">Album</option>
+        <option value="release_date">Release date</option>
+        <option value="duration_ms">Length</option>
+      </select>
+
+      <button id="btn-sort-direction" data-testid="btn-sort-direction" type="button" data-direction="desc">Descending</button>
+
+      <label id="label-explicit" for="chk-hide-explicit">
+        <input id="chk-hide-explicit" data-testid="chk-hide-explicit" type="checkbox"> Hide explicit
+      </label>
+
+      <button id="btn-logout" data-testid="btn-logout" type="button">Start over</button>
+    </div>
+
+    <p id="song-count" data-testid="song-count"></p>
+
+    <table id="songs-table" data-testid="songs-table">
+      <thead>
+        <tr>
+          <th id="col-index" scope="col">#</th>
+          <th id="col-name" scope="col">Title</th>
+          <th id="col-artist" scope="col">Artist</th>
+          <th id="col-album" scope="col">Album</th>
+          <th id="col-release" scope="col">Released</th>
+          <th id="col-duration" scope="col">Length</th>
+          <th id="col-added" scope="col">Added</th>
+        </tr>
+      </thead>
+      <tbody id="songs-body" data-testid="songs-body"></tbody>
+    </table>
+
+    <p id="empty-message" data-testid="empty-message" hidden>No songs match your search.</p>
+  </section>
+
+  <script src="sample-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

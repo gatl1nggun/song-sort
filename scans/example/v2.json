@@ -1,0 +1,1473 @@
+{
+  "url": "http://127.0.0.1:8000/?demo=1",
+  "scannedAt": "2026-10-23T01:09:17.906Z",
+  "title": "Song Sorter",
+  "count": 158,
+  "elements": [
+    {
+      "key": "#app-header",
+      "tag": "header",
+      "id": "app-header",
+      "testid": null,
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#app-title",
+      "tag": "h1",
+      "id": "app-title",
+      "testid": null,
+      "text": "Song Sorter",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#app-version",
+      "tag": "span",
+      "id": "app-version",
+      "testid": "app-version",
+      "text": "v2",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#connect-panel",
+      "tag": "section",
+      "id": "connect-panel",
+      "testid": "connect-panel",
+      "text": null,
+      "visible": false,
+      "attrs": {
+        "hidden": ""
+      }
+    },
+    {
+      "key": "#connect-heading",
+      "tag": "h2",
+      "id": "connect-heading",
+      "testid": null,
+      "text": "Load your songs",
+      "visible": false,
+      "attrs": {}
+    },
+    {
+      "key": "#connect-help",
+      "tag": "p",
+      "id": "connect-help",
+      "testid": null,
+      "text": "Use demo data to try the page without a Spotify account, or paste your Spotify app's Client ID to load your Liked Songs.",
+      "visible": false,
+      "attrs": {}
+    },
+    {
+      "key": "#btn-demo",
+      "tag": "button",
+      "id": "btn-demo",
+      "testid": "btn-demo",
+      "text": "Use demo data",
+      "visible": false,
+      "attrs": {
+        "type": "button"
+      }
+    },
+    {
+      "key": "#label-client-id",
+      "tag": "label",
+      "id": "label-client-id",
+      "testid": null,
+      "text": "Spotify Client ID",
+      "visible": false,
+      "attrs": {
+        "for": "input-client-id"
+      }
+    },
+    {
+      "key": "#input-client-id",
+      "tag": "input",
+      "id": "input-client-id",
+      "testid": "input-client-id",
+      "text": "",
+      "visible": false,
+      "attrs": {
+        "type": "text",
+        "placeholder": "32-character Client ID"
+      }
+    },
+    {
+      "key": "#btn-connect",
+      "tag": "button",
+      "id": "btn-connect",
+      "testid": "btn-connect",
+      "text": "Connect to Spotify",
+      "visible": false,
+      "attrs": {
+        "type": "button"
+      }
+    },
+    {
+      "key": "#redirect-hint",
+      "tag": "p",
+      "id": "redirect-hint",
+      "testid": null,
+      "text": "Redirect URI to register in the Spotify dashboard: http://127.0.0.1:8000/",
+      "visible": false,
+      "attrs": {}
+    },
+    {
+      "key": "#redirect-uri",
+      "tag": "code",
+      "id": "redirect-uri",
+      "testid": "redirect-uri",
+      "text": "http://127.0.0.1:8000/",
+      "visible": false,
+      "attrs": {}
+    },
+    {
+      "key": "#status-message",
+      "tag": "p",
+      "id": "status-message",
+      "testid": "status-message",
+      "text": "Loaded 15 songs from demo data.",
+      "visible": true,
+      "attrs": {
+        "role": "status"
+      }
+    },
+    {
+      "key": "#songs-panel",
+      "tag": "section",
+      "id": "songs-panel",
+      "testid": "songs-panel",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#toolbar",
+      "tag": "div",
+      "id": "toolbar",
+      "testid": null,
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#label-search",
+      "tag": "label",
+      "id": "label-search",
+      "testid": null,
+      "text": "Search",
+      "visible": true,
+      "attrs": {
+        "for": "input-search"
+      }
+    },
+    {
+      "key": "#input-search",
+      "tag": "input",
+      "id": "input-search",
+      "testid": "input-search",
+      "text": "",
+      "visible": true,
+      "attrs": {
+        "type": "search",
+        "placeholder": "Title, artist or album"
+      }
+    },
+    {
+      "key": "#label-sort",
+      "tag": "label",
+      "id": "label-sort",
+      "testid": null,
+      "text": "Sort by",
+      "visible": true,
+      "attrs": {
+        "for": "select-sort"
+      }
+    },
+    {
+      "key": "#select-sort",
+      "tag": "select",
+      "id": "select-sort",
+      "testid": "select-sort",
+      "text": null,
+      "visible": true,
+      "attrs": {
+        "options": [
+          "added_at=Date added",
+          "name=Title",
+          "artist=Artist",
+          "album=Album",
+          "release_date=Release date",
+          "duration_ms=Length",
+          "random=Random"
+        ]
+      }
+    },
+    {
+      "key": "#btn-sort-direction",
+      "tag": "button",
+      "id": "btn-sort-direction",
+      "testid": "btn-sort-direction",
+      "text": "Descending",
+      "visible": true,
+      "attrs": {
+        "type": "button",
+        "data-direction": "desc"
+      }
+    },
+    {
+      "key": "#label-explicit",
+      "tag": "label",
+      "id": "label-explicit",
+      "testid": null,
+      "text": "Hide explicit",
+      "visible": true,
+      "attrs": {
+        "for": "chk-hide-explicit"
+      }
+    },
+    {
+      "key": "#chk-hide-explicit",
+      "tag": "input",
+      "id": "chk-hide-explicit",
+      "testid": "chk-hide-explicit",
+      "text": "",
+      "visible": true,
+      "attrs": {
+        "type": "checkbox"
+      }
+    },
+    {
+      "key": "#btn-logout",
+      "tag": "button",
+      "id": "btn-logout",
+      "testid": "btn-logout",
+      "text": "Sign out",
+      "visible": true,
+      "attrs": {
+        "type": "button"
+      }
+    },
+    {
+      "key": "#btn-shuffle",
+      "tag": "button",
+      "id": "btn-shuffle",
+      "testid": "btn-shuffle",
+      "text": "Shuffle",
+      "visible": true,
+      "attrs": {
+        "type": "button"
+      }
+    },
+    {
+      "key": "#song-count",
+      "tag": "p",
+      "id": "song-count",
+      "testid": "song-count",
+      "text": "Showing 15 of 15 songs",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#songs-table",
+      "tag": "table",
+      "id": "songs-table",
+      "testid": "songs-table",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-index",
+      "tag": "th",
+      "id": "col-index",
+      "testid": null,
+      "text": "#",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-name",
+      "tag": "th",
+      "id": "col-name",
+      "testid": null,
+      "text": "Title",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-artist",
+      "tag": "th",
+      "id": "col-artist",
+      "testid": null,
+      "text": "Artist",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-album",
+      "tag": "th",
+      "id": "col-album",
+      "testid": null,
+      "text": "Album",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-release",
+      "tag": "th",
+      "id": "col-release",
+      "testid": null,
+      "text": "Released",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-duration",
+      "tag": "th",
+      "id": "col-duration",
+      "testid": null,
+      "text": "Length",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-added",
+      "tag": "th",
+      "id": "col-added",
+      "testid": null,
+      "text": "Added",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#songs-body",
+      "tag": "tbody",
+      "id": "songs-body",
+      "testid": "songs-body",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo01",
+      "tag": "tr",
+      "id": "song-row-demo01",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@35",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "1",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@36",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Neon Harbor",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@37",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "The Quiet Static",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@38",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Night Ferry",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@39",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2019-04-12",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@40",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:34",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@41",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-10-01",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo02",
+      "tag": "tr",
+      "id": "song-row-demo02",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@43",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "2",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@44",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Paper Satellites",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@45",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Juniper Vale",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@46",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Low Orbit",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@47",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2021-09-03",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@48",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:08",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@49",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-09-28",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo03",
+      "tag": "tr",
+      "id": "song-row-demo03",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@51",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "3",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@52",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Gravel Road Gospel",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@53",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Hollis & The Pines",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@54",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Dust Bowl Hymns",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@55",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2015-06-30",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@56",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "4:16",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@57",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-09-15",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo04",
+      "tag": "tr",
+      "id": "song-row-demo04",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@59",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "4",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@60",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Static BloomE",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-explicit]@61",
+      "tag": "span",
+      "id": null,
+      "testid": "song-explicit",
+      "text": "E",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@62",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "The Quiet Static",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@63",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Night Ferry",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@64",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2019-04-12",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@65",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:18",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@66",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-08-30",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo05",
+      "tag": "tr",
+      "id": "song-row-demo05",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@68",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "5",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@69",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Afterglow Arcade",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@70",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Pixel Tide",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@71",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Continue?",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@72",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2023-02-17",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@73",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "2:52",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@74",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-08-11",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo06",
+      "tag": "tr",
+      "id": "song-row-demo06",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@76",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "6",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@77",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Concrete LullabyE",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-explicit]@78",
+      "tag": "span",
+      "id": null,
+      "testid": "song-explicit",
+      "text": "E",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@79",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "MC Lowlight",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@80",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Streetlamp Sessions",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@81",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2020-11-20",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@82",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:43",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@83",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-07-29",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo07",
+      "tag": "tr",
+      "id": "song-row-demo07",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@85",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "7",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@86",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Brass Weather",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@87",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Ostinato Club",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@88",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Forecast",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@89",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2012-03-08",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@90",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "5:01",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@91",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-07-04",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo08",
+      "tag": "tr",
+      "id": "song-row-demo08",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@93",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "8",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@94",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Fold the Map",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@95",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Juniper Vale",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@96",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Low Orbit",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@97",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2021-09-03",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@98",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:25",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@99",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-06-21",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo09",
+      "tag": "tr",
+      "id": "song-row-demo09",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@101",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "9",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@102",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Velvet Engine",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@103",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Rosa Kestrel",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@104",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Overdrive Heart",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@105",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2018-08-24",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@106",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "4:01",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@107",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-06-02",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo10",
+      "tag": "tr",
+      "id": "song-row-demo10",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@109",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "10",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@110",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Ghost Note",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@111",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Ostinato Club",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@112",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Forecast",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@113",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2012-03-08",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@114",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "2:38",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@115",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-05-19",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo11",
+      "tag": "tr",
+      "id": "song-row-demo11",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@117",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "11",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@118",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Midnight RecessE",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-explicit]@119",
+      "tag": "span",
+      "id": null,
+      "testid": "song-explicit",
+      "text": "E",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@120",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "MC Lowlight",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@121",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Streetlamp Sessions",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@122",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2020-11-20",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@123",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:09",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@124",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-04-30",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo12",
+      "tag": "tr",
+      "id": "song-row-demo12",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@126",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "12",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@127",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Saltwater Radio",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@128",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Hollis & The Pines",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@129",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Coastline",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@130",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2024-05-10",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@131",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:53",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@132",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-04-02",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo13",
+      "tag": "tr",
+      "id": "song-row-demo13",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@134",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "13",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@135",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Level Select",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@136",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Pixel Tide",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@137",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Continue?",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@138",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2023-02-17",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@139",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "2:25",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@140",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-03-14",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo14",
+      "tag": "tr",
+      "id": "song-row-demo14",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@142",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "14",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@143",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Ember Choir",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@144",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Rosa Kestrel",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@145",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Overdrive Heart",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@146",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2018-08-24",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@147",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "4:36",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@148",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-02-08",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#song-row-demo15",
+      "tag": "tr",
+      "id": "song-row-demo15",
+      "testid": "song-row",
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-index]@150",
+      "tag": "td",
+      "id": null,
+      "testid": "song-index",
+      "text": "15",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-name]@151",
+      "tag": "td",
+      "id": null,
+      "testid": "song-name",
+      "text": "Small Hours",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-artist]@152",
+      "tag": "td",
+      "id": null,
+      "testid": "song-artist",
+      "text": "Juniper Vale",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-album]@153",
+      "tag": "td",
+      "id": null,
+      "testid": "song-album",
+      "text": "Porchlight",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-release]@154",
+      "tag": "td",
+      "id": null,
+      "testid": "song-release",
+      "text": "2025-10-31",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-duration]@155",
+      "tag": "td",
+      "id": null,
+      "testid": "song-duration",
+      "text": "3:40",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@156",
+      "tag": "td",
+      "id": null,
+      "testid": "song-added",
+      "text": "2026-01-01",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#empty-message",
+      "tag": "p",
+      "id": "empty-message",
+      "testid": "empty-message",
+      "text": "No songs match your search.",
+      "visible": false,
+      "attrs": {
+        "hidden": ""
+      }
+    }
+  ]
+}
