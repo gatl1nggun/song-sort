@@ -3,8 +3,11 @@
 //
 // Auth is Authorization Code with PKCE, so no client secret is needed.
 // Only the user-library-read scope is requested.
+//
+// Key and BPM come from GetSongBPM through the local server (scan/serve.mjs),
+// which holds the API key. The page sends it only a song's title and artist.
 
-const APP_VERSION = "v1";
+const APP_VERSION = "v2";
 const SCOPES = "user-library-read";
 const MAX_SONGS = 500; // keeps us well inside Development Mode quotas
 const STORAGE = {
@@ -21,6 +24,9 @@ const state = {
   direction: "desc",
   search: "",
   hideExplicit: false,
+  source: null,       // "demo" or "spotify"
+  info: new Map(),    // song id -> { key, open_key, tempo } or null when not found
+  lookingUp: false,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -45,7 +51,16 @@ function formatDuration(ms) {
   return `${m}:${s}`;
 }
 
+// GetSongBPM uses Open Key notation: "1m" (A minor) .. "12d". Minor keys sort
+// just before the major key on the same number, so wheel order is kept.
+function openKeyRank(openKey) {
+  const m = /^(\d{1,2})([dm])$/i.exec(openKey || "");
+  return m ? Number(m[1]) + (m[2].toLowerCase() === "d" ? 0.5 : 0) : null;
+}
+
 function sortValue(song, key) {
+  if (key === "tempo") return state.info.get(song.id)?.tempo ?? null;
+  if (key === "open_key") return openKeyRank(state.info.get(song.id)?.open_key);
   const v = song[key];
   return typeof v === "string" ? v.toLowerCase() : v;
 }
@@ -61,6 +76,9 @@ function visibleSongs() {
   return filtered.sort((a, b) => {
     const av = sortValue(a, state.sortKey);
     const bv = sortValue(b, state.sortKey);
+    // Songs without a key/BPM go last in either direction.
+    if (av === null && bv !== null) return 1;
+    if (bv === null && av !== null) return -1;
     if (av < bv) return -1 * dir;
     if (av > bv) return 1 * dir;
     return a.id < b.id ? -1 : 1; // stable tie-break so scans are repeatable
@@ -101,6 +119,10 @@ function render() {
     cell(tr, "col-album", song.album, "song-album");
     cell(tr, "col-release", song.release_date, "song-release");
     cell(tr, "col-duration", formatDuration(song.duration_ms), "song-duration");
+    const info = state.info.get(song.id);
+    const pending = !state.info.has(song.id);
+    cell(tr, "col-key", pending ? "" : info?.key ? `${info.key} (${info.open_key})` : "–", "song-key");
+    cell(tr, "col-bpm", pending ? "" : info?.tempo ? String(info.tempo) : "–", "song-bpm");
     cell(tr, "col-added", song.added_at.slice(0, 10), "song-added");
     body.appendChild(tr);
   });
@@ -110,8 +132,11 @@ function render() {
   $("songs-table").hidden = songs.length === 0;
 }
 
-function loadSongs(songs, sourceLabel) {
+function loadSongs(songs, source) {
+  const sourceLabel = source === "demo" ? "demo data" : "Spotify";
   state.songs = songs;
+  state.source = source;
+  state.info = new Map();
   showSongsPanel(true);
   setStatus(`Loaded ${songs.length} songs from ${sourceLabel}.`);
   render();
@@ -203,11 +228,53 @@ async function fetchLikedSongs(token) {
   return songs.slice(0, MAX_SONGS);
 }
 
+// ---------- Key and BPM (GetSongBPM via local server) ----------
+
+async function fetchSongInfo(song) {
+  if (state.source === "demo") return song.demo_info; // offline, no network call
+  const params = new URLSearchParams({ title: song.name, artist: song.artist });
+  const res = await fetch(`/api/songinfo?${params}`);
+  if (res.status === 404) throw new Error("Key/BPM lookup needs the local server. Start it with npm run serve.");
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body.error || `Key/BPM lookup failed (${res.status})`);
+  return body.found ? { key: body.key, open_key: body.open_key, tempo: body.tempo } : null;
+}
+
+async function lookupKeys() {
+  if (state.lookingUp) return;
+  const todo = state.songs.filter((s) => !state.info.has(s.id));
+  if (!todo.length) {
+    setStatus("Key and BPM already looked up for every song.");
+    return;
+  }
+  state.lookingUp = true;
+  $("btn-lookup").disabled = true;
+  let found = 0;
+  try {
+    for (const [i, song] of todo.entries()) {
+      const info = await fetchSongInfo(song);
+      state.info.set(song.id, info);
+      if (info) found++;
+      setStatus(`Looking up key and BPM... ${i + 1} of ${todo.length}`);
+      if ((i + 1) % 10 === 0) render();
+    }
+    setStatus(`Key and BPM found for ${found} of ${todo.length} songs.`);
+  } catch (err) {
+    setStatus(err.message, true);
+  } finally {
+    state.lookingUp = false;
+    $("btn-lookup").disabled = false;
+    render();
+  }
+}
+
 // ---------- Wiring ----------
 
 function resetAll() {
   sessionStorage.removeItem(STORAGE.token);
   state.songs = [];
+  state.info = new Map();
+  state.source = null;
   state.search = "";
   $("input-search").value = "";
   showSongsPanel(false);
@@ -215,7 +282,8 @@ function resetAll() {
 }
 
 function bindEvents() {
-  $("btn-demo").addEventListener("click", () => loadSongs(window.SAMPLE_SONGS.slice(), "demo data"));
+  $("btn-demo").addEventListener("click", () => loadSongs(window.SAMPLE_SONGS.slice(), "demo"));
+  $("btn-lookup").addEventListener("click", lookupKeys);
   $("btn-connect").addEventListener("click", startLogin);
   $("btn-logout").addEventListener("click", resetAll);
 
@@ -239,7 +307,7 @@ async function init() {
   // ?demo=1 skips the connect step, handy for automated scans.
   const params = new URLSearchParams(window.location.search);
   if (params.has("demo")) {
-    loadSongs(window.SAMPLE_SONGS.slice(), "demo data");
+    loadSongs(window.SAMPLE_SONGS.slice(), "demo");
     return;
   }
 
@@ -251,7 +319,7 @@ async function init() {
       token = await exchangeCode(params.get("code"));
       window.history.replaceState({}, "", REDIRECT_URI);
     }
-    if (token) loadSongs(await fetchLikedSongs(token), "Spotify");
+    if (token) loadSongs(await fetchLikedSongs(token), "spotify");
   } catch (err) {
     sessionStorage.removeItem(STORAGE.token);
     showSongsPanel(false);

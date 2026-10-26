@@ -1,3 +1,5 @@
 node_modules/
 scans/*.json
 scans/*.md
+.env
+.cache/

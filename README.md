@@ -49,6 +49,36 @@ The page reads at most 500 songs and only asks for the `user-library-read`
 scope. The access token is kept in `sessionStorage` and never leaves your browser
 except to call Spotify.
 
+## Key and BPM (GetSongBPM)
+
+Spotify no longer gives new apps a song's key or tempo, so the
+**Look up key & BPM** button gets them from [GetSongBPM](https://getsongbpm.com).
+
+1. Get a free key at <https://getsongbpm.com/api>. Use
+   `https://github.com/gatl1nggun/song-sort` as both the website and the
+   backlink URL. The link back to GetSongBPM is required, and the page footer
+   and this README carry it.
+2. `cp .env.example .env` and put the key after `GETSONGBPM_API_KEY=`.
+3. Restart `npm run serve`. It prints "GetSongBPM key loaded from .env".
+
+How it stays separate from your Spotify account:
+
+- The browser calls only the local server (`/api/songinfo?title=...&artist=...`).
+  The server adds the key and calls GetSongBPM. The key never reaches the
+  browser, and it's sent in a header, not the URL.
+- Only the title and first artist are sent. No Spotify token, ids or account
+  data go to the server or to GetSongBPM.
+- The server only listens on 127.0.0.1, rejects requests from other websites,
+  and never serves dotfiles such as `.env`.
+- Results (including "not found") are cached in `.cache/songinfo.json` so each
+  song is looked up once. Calls are spaced out to stay under GetSongBPM's
+  3,000 per hour limit.
+- `.env` and `.cache/` are git-ignored.
+
+In demo mode the button uses made-up values from `sample-data.js` and makes
+no network calls, so it works without a key. Key sorting uses GetSongBPM's
+Open Key notation (1m to 12d), and songs with no match sort last.
+
 ## Scan, change, rescan, diff (Playwright)
 
 ```bash
@@ -62,8 +92,9 @@ npm run diff -- scans/before.json scans/after.json scans/changes.md
 `scan` records every element with an id or `data-testid`: tag, text,
 visibility and key attributes (including `<select>` options). `diff` writes a
 Markdown report of added, removed and changed elements plus a starter list of
-test cases. See `scans/example/` for a real run where v2 added a Shuffle
-button, a Random sort option, and renamed "Start over" to "Sign out".
+test cases. See `scans/example/` for the real v1 to v2 run, where v2 added the
+key/BPM lookup button, the Key and BPM columns, two sort options and the
+GetSongBPM credit.
 
 ## Doing the same in Tosca
 
@@ -84,9 +115,10 @@ and they give a second, independent record to compare against Tosca's.
 | Area | ids |
 |---|---|
 | Connect | `btn-demo`, `input-client-id`, `btn-connect`, `redirect-uri` |
-| Toolbar | `input-search`, `select-sort`, `btn-sort-direction` (`data-direction`), `chk-hide-explicit`, `btn-logout` |
-| Results | `song-count`, `songs-table`, `songs-body`, `song-row-<id>`, `empty-message`, `status-message` |
-| Row cells (`data-testid`) | `song-index`, `song-name`, `song-explicit`, `song-artist`, `song-album`, `song-release`, `song-duration`, `song-added` |
+| Toolbar | `input-search`, `select-sort`, `btn-sort-direction` (`data-direction`), `chk-hide-explicit`, `btn-lookup`, `btn-logout` |
+| Results | `song-count`, `songs-table`, `songs-body`, `song-row-<id>`, `col-key`, `col-bpm`, `empty-message`, `status-message` |
+| Footer | `app-footer`, `credit-getsongbpm`, `link-getsongbpm` |
+| Row cells (`data-testid`) | `song-index`, `song-name`, `song-explicit`, `song-artist`, `song-album`, `song-release`, `song-duration`, `song-key`, `song-bpm`, `song-added` |
 
 ## Starter test cases (demo data)
 
@@ -101,10 +133,15 @@ and they give a second, independent record to compare against Tosca's.
 | 7 | Tick Hide explicit | 12 of 15 shown, no `song-explicit` badges |
 | 8 | Click Start over | Connect panel visible again |
 | 9 | Enter "bad" as Client ID, Connect | Error in `#status-message` |
+| 10 | Demo data, click Look up key & BPM | "Key and BPM found for 14 of 15 songs." |
+| 11 | Then sort by BPM, Ascending | First "Ember Choir" (70), "Small Hours" (–) last |
+| 12 | Then sort by Key, Ascending | First four keys: Am (1m), C (1d), Em (2m), G (2d) |
+| 13 | Real data, server running without `.env` | Error says GETSONGBPM_API_KEY is not set |
 
 ## Change ideas for v2 practice
 
 - Add a Shuffle button or a "Random" sort option.
+- Add a BPM range filter (for example 90 to 110).
 - Rename a button or column header.
 - Add a "Group by artist" view or an artist dropdown filter.
 - Remove the album column on small screens only (visibility change).
