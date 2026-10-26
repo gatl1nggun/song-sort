@@ -49,35 +49,33 @@ The page reads at most 500 songs and only asks for the `user-library-read`
 scope. The access token is kept in `sessionStorage` and never leaves your browser
 except to call Spotify.
 
-## Key and BPM (GetSongBPM)
+## Key and BPM (ReccoBeats)
 
 Spotify no longer gives new apps a song's key or tempo, so the
-**Look up key & BPM** button gets them from [GetSongBPM](https://getsongbpm.com).
-
-1. Get a free key at <https://getsongbpm.com/api>. Use
-   `https://github.com/gatl1nggun/song-sort` as both the website and the
-   backlink URL. The link back to GetSongBPM is required, and the page footer
-   and this README carry it.
-2. `cp .env.example .env` and put the key after `GETSONGBPM_API_KEY=`.
-3. Restart `npm run serve`. It prints "GetSongBPM key loaded from .env".
+**Look up key & BPM** button gets them from [ReccoBeats](https://reccobeats.com),
+a free API that needs no key or sign-up. Just run `npm run serve` and click it.
 
 How it stays separate from your Spotify account:
 
-- The browser calls only the local server (`/api/songinfo?title=...&artist=...`).
-  The server adds the key and calls GetSongBPM. The key never reaches the
-  browser, and it's sent in a header, not the URL.
-- Only the title and first artist are sent. No Spotify token, ids or account
-  data go to the server or to GetSongBPM.
+- The browser calls only the local server (`/api/songinfo?ids=...`), which
+  calls ReccoBeats. No ReccoBeats code or request runs in the page.
+- Only public Spotify track ids (the same ids in any `open.spotify.com/track/...`
+  link) are sent, up to 40 per call. No Spotify token or account data goes to
+  the server or to ReccoBeats.
 - The server only listens on 127.0.0.1, rejects requests from other websites,
-  and never serves dotfiles such as `.env`.
+  only accepts well-formed Spotify ids, and never serves dotfiles.
 - Results (including "not found") are cached in `.cache/songinfo.json` so each
-  song is looked up once. Calls are spaced out to stay under GetSongBPM's
-  3,000 per hour limit.
-- `.env` and `.cache/` are git-ignored.
+  song is looked up once. Delete that folder to retry songs that weren't found.
+  Calls are spaced out to keep traffic polite.
 
 In demo mode the button uses made-up values from `sample-data.js` and makes
-no network calls, so it works without a key. Key sorting uses GetSongBPM's
-Open Key notation (1m to 12d), and songs with no match sort last.
+no network calls. Keys are shown as name plus Open Key notation, for example
+"Em (2m)". Key sorting follows the Open Key wheel (1m to 12d), and songs with
+no match sort last.
+
+ReccoBeats' terms allow personal and commercial use, need no attribution
+(the footer credits them anyway), and say they may rate-limit or block IPs
+that send excessive traffic.
 
 ## Scan, change, rescan, diff (Playwright)
 
@@ -92,9 +90,10 @@ npm run diff -- scans/before.json scans/after.json scans/changes.md
 `scan` records every element with an id or `data-testid`: tag, text,
 visibility and key attributes (including `<select>` options). `diff` writes a
 Markdown report of added, removed and changed elements plus a starter list of
-test cases. See `scans/example/` for the real v1 to v2 run, where v2 added the
-key/BPM lookup button, the Key and BPM columns, two sort options and the
-GetSongBPM credit.
+test cases. See `scans/example/` for real runs: `example-changes.md` is v1 to v2 (key/BPM
+button, Key and BPM columns, two sort options, credit link) and
+`v2-to-v3-changes.md` is v2 to v3 (data source switched, so the credit ids
+changed).
 
 ## Doing the same in Tosca
 
@@ -117,7 +116,7 @@ and they give a second, independent record to compare against Tosca's.
 | Connect | `btn-demo`, `input-client-id`, `btn-connect`, `redirect-uri` |
 | Toolbar | `input-search`, `select-sort`, `btn-sort-direction` (`data-direction`), `chk-hide-explicit`, `btn-lookup`, `btn-logout` |
 | Results | `song-count`, `songs-table`, `songs-body`, `song-row-<id>`, `col-key`, `col-bpm`, `empty-message`, `status-message` |
-| Footer | `app-footer`, `credit-getsongbpm`, `link-getsongbpm` |
+| Footer | `app-footer`, `credit-data`, `link-reccobeats` |
 | Row cells (`data-testid`) | `song-index`, `song-name`, `song-explicit`, `song-artist`, `song-album`, `song-release`, `song-duration`, `song-key`, `song-bpm`, `song-added` |
 
 ## Starter test cases (demo data)
@@ -136,7 +135,7 @@ and they give a second, independent record to compare against Tosca's.
 | 10 | Demo data, click Look up key & BPM | "Key and BPM found for 14 of 15 songs." |
 | 11 | Then sort by BPM, Ascending | First "Ember Choir" (70), "Small Hours" (–) last |
 | 12 | Then sort by Key, Ascending | First four keys: Am (1m), C (1d), Em (2m), G (2d) |
-| 13 | Real data, server running without `.env` | Error says GETSONGBPM_API_KEY is not set |
+| 13 | Real data, page opened without the local server | Error says the lookup needs the local server |
 
 ## Change ideas for v2 practice
 
