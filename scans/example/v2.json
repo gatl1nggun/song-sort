@@ -1,8 +1,8 @@
 {
   "url": "http://127.0.0.1:8000/?demo=1",
-  "scannedAt": "2026-10-23T01:09:17.906Z",
+  "scannedAt": "2026-10-26T00:45:54.218Z",
   "title": "Song Sorter",
-  "count": 158,
+  "count": 193,
   "elements": [
     {
       "key": "#app-header",
@@ -201,7 +201,8 @@
           "album=Album",
           "release_date=Release date",
           "duration_ms=Length",
-          "random=Random"
+          "tempo=BPM",
+          "open_key=Key (Open Key)"
         ]
       }
     },
@@ -240,22 +241,22 @@
       }
     },
     {
-      "key": "#btn-logout",
+      "key": "#btn-lookup",
       "tag": "button",
-      "id": "btn-logout",
-      "testid": "btn-logout",
-      "text": "Sign out",
+      "id": "btn-lookup",
+      "testid": "btn-lookup",
+      "text": "Look up key & BPM",
       "visible": true,
       "attrs": {
         "type": "button"
       }
     },
     {
-      "key": "#btn-shuffle",
+      "key": "#btn-logout",
       "tag": "button",
-      "id": "btn-shuffle",
-      "testid": "btn-shuffle",
-      "text": "Shuffle",
+      "id": "btn-logout",
+      "testid": "btn-logout",
+      "text": "Start over",
       "visible": true,
       "attrs": {
         "type": "button"
@@ -334,6 +335,24 @@
       "attrs": {}
     },
     {
+      "key": "#col-key",
+      "tag": "th",
+      "id": "col-key",
+      "testid": null,
+      "text": "Key",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#col-bpm",
+      "tag": "th",
+      "id": "col-bpm",
+      "testid": null,
+      "text": "BPM",
+      "visible": true,
+      "attrs": {}
+    },
+    {
       "key": "#col-added",
       "tag": "th",
       "id": "col-added",
@@ -361,7 +380,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@35",
+      "key": "[data-testid=song-index]@37",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -370,7 +389,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@36",
+      "key": "[data-testid=song-name]@38",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -379,7 +398,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@37",
+      "key": "[data-testid=song-artist]@39",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -388,7 +407,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@38",
+      "key": "[data-testid=song-album]@40",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -397,7 +416,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@39",
+      "key": "[data-testid=song-release]@41",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -406,7 +425,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@40",
+      "key": "[data-testid=song-duration]@42",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -415,7 +434,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@41",
+      "key": "[data-testid=song-key]@43",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@44",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@45",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -433,7 +470,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@43",
+      "key": "[data-testid=song-index]@47",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -442,7 +479,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@44",
+      "key": "[data-testid=song-name]@48",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -451,7 +488,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@45",
+      "key": "[data-testid=song-artist]@49",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -460,7 +497,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@46",
+      "key": "[data-testid=song-album]@50",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -469,7 +506,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@47",
+      "key": "[data-testid=song-release]@51",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -478,7 +515,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@48",
+      "key": "[data-testid=song-duration]@52",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -487,7 +524,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@49",
+      "key": "[data-testid=song-key]@53",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@54",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@55",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -505,7 +560,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@51",
+      "key": "[data-testid=song-index]@57",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -514,7 +569,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@52",
+      "key": "[data-testid=song-name]@58",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -523,7 +578,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@53",
+      "key": "[data-testid=song-artist]@59",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -532,7 +587,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@54",
+      "key": "[data-testid=song-album]@60",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -541,7 +596,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@55",
+      "key": "[data-testid=song-release]@61",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -550,7 +605,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@56",
+      "key": "[data-testid=song-duration]@62",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -559,7 +614,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@57",
+      "key": "[data-testid=song-key]@63",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@64",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@65",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -577,7 +650,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@59",
+      "key": "[data-testid=song-index]@67",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -586,7 +659,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@60",
+      "key": "[data-testid=song-name]@68",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -595,7 +668,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-explicit]@61",
+      "key": "[data-testid=song-explicit]@69",
       "tag": "span",
       "id": null,
       "testid": "song-explicit",
@@ -604,7 +677,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@62",
+      "key": "[data-testid=song-artist]@70",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -613,7 +686,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@63",
+      "key": "[data-testid=song-album]@71",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -622,7 +695,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@64",
+      "key": "[data-testid=song-release]@72",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -631,7 +704,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@65",
+      "key": "[data-testid=song-duration]@73",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -640,7 +713,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@66",
+      "key": "[data-testid=song-key]@74",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@75",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@76",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -658,7 +749,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@68",
+      "key": "[data-testid=song-index]@78",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -667,7 +758,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@69",
+      "key": "[data-testid=song-name]@79",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -676,7 +767,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@70",
+      "key": "[data-testid=song-artist]@80",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -685,7 +776,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@71",
+      "key": "[data-testid=song-album]@81",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -694,7 +785,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@72",
+      "key": "[data-testid=song-release]@82",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -703,7 +794,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@73",
+      "key": "[data-testid=song-duration]@83",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -712,7 +803,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@74",
+      "key": "[data-testid=song-key]@84",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@85",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@86",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -730,7 +839,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@76",
+      "key": "[data-testid=song-index]@88",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -739,7 +848,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@77",
+      "key": "[data-testid=song-name]@89",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -748,7 +857,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-explicit]@78",
+      "key": "[data-testid=song-explicit]@90",
       "tag": "span",
       "id": null,
       "testid": "song-explicit",
@@ -757,7 +866,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@79",
+      "key": "[data-testid=song-artist]@91",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -766,7 +875,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@80",
+      "key": "[data-testid=song-album]@92",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -775,7 +884,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@81",
+      "key": "[data-testid=song-release]@93",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -784,7 +893,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@82",
+      "key": "[data-testid=song-duration]@94",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -793,7 +902,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@83",
+      "key": "[data-testid=song-key]@95",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@96",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@97",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -811,7 +938,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@85",
+      "key": "[data-testid=song-index]@99",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -820,7 +947,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@86",
+      "key": "[data-testid=song-name]@100",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -829,7 +956,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@87",
+      "key": "[data-testid=song-artist]@101",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -838,7 +965,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@88",
+      "key": "[data-testid=song-album]@102",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -847,7 +974,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@89",
+      "key": "[data-testid=song-release]@103",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -856,7 +983,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@90",
+      "key": "[data-testid=song-duration]@104",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -865,7 +992,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@91",
+      "key": "[data-testid=song-key]@105",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@106",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@107",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -883,7 +1028,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@93",
+      "key": "[data-testid=song-index]@109",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -892,7 +1037,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@94",
+      "key": "[data-testid=song-name]@110",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -901,7 +1046,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@95",
+      "key": "[data-testid=song-artist]@111",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -910,7 +1055,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@96",
+      "key": "[data-testid=song-album]@112",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -919,7 +1064,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@97",
+      "key": "[data-testid=song-release]@113",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -928,7 +1073,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@98",
+      "key": "[data-testid=song-duration]@114",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -937,7 +1082,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@99",
+      "key": "[data-testid=song-key]@115",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@116",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@117",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -955,7 +1118,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@101",
+      "key": "[data-testid=song-index]@119",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -964,7 +1127,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@102",
+      "key": "[data-testid=song-name]@120",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -973,7 +1136,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@103",
+      "key": "[data-testid=song-artist]@121",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -982,7 +1145,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@104",
+      "key": "[data-testid=song-album]@122",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -991,7 +1154,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@105",
+      "key": "[data-testid=song-release]@123",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -1000,7 +1163,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@106",
+      "key": "[data-testid=song-duration]@124",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -1009,7 +1172,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@107",
+      "key": "[data-testid=song-key]@125",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@126",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@127",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -1027,7 +1208,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@109",
+      "key": "[data-testid=song-index]@129",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -1036,7 +1217,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@110",
+      "key": "[data-testid=song-name]@130",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -1045,7 +1226,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@111",
+      "key": "[data-testid=song-artist]@131",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -1054,7 +1235,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@112",
+      "key": "[data-testid=song-album]@132",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -1063,7 +1244,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@113",
+      "key": "[data-testid=song-release]@133",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -1072,7 +1253,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@114",
+      "key": "[data-testid=song-duration]@134",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -1081,7 +1262,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@115",
+      "key": "[data-testid=song-key]@135",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@136",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@137",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -1099,7 +1298,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@117",
+      "key": "[data-testid=song-index]@139",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -1108,7 +1307,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@118",
+      "key": "[data-testid=song-name]@140",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -1117,7 +1316,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-explicit]@119",
+      "key": "[data-testid=song-explicit]@141",
       "tag": "span",
       "id": null,
       "testid": "song-explicit",
@@ -1126,7 +1325,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@120",
+      "key": "[data-testid=song-artist]@142",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -1135,7 +1334,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@121",
+      "key": "[data-testid=song-album]@143",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -1144,7 +1343,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@122",
+      "key": "[data-testid=song-release]@144",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -1153,7 +1352,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@123",
+      "key": "[data-testid=song-duration]@145",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -1162,7 +1361,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@124",
+      "key": "[data-testid=song-key]@146",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@147",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@148",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -1180,7 +1397,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@126",
+      "key": "[data-testid=song-index]@150",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -1189,7 +1406,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@127",
+      "key": "[data-testid=song-name]@151",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -1198,7 +1415,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@128",
+      "key": "[data-testid=song-artist]@152",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -1207,7 +1424,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@129",
+      "key": "[data-testid=song-album]@153",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -1216,7 +1433,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@130",
+      "key": "[data-testid=song-release]@154",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -1225,7 +1442,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@131",
+      "key": "[data-testid=song-duration]@155",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -1234,7 +1451,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@132",
+      "key": "[data-testid=song-key]@156",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@157",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@158",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -1252,7 +1487,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@134",
+      "key": "[data-testid=song-index]@160",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -1261,7 +1496,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@135",
+      "key": "[data-testid=song-name]@161",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -1270,7 +1505,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@136",
+      "key": "[data-testid=song-artist]@162",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -1279,7 +1514,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@137",
+      "key": "[data-testid=song-album]@163",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -1288,7 +1523,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@138",
+      "key": "[data-testid=song-release]@164",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -1297,7 +1532,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@139",
+      "key": "[data-testid=song-duration]@165",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -1306,7 +1541,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@140",
+      "key": "[data-testid=song-key]@166",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@167",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@168",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -1324,7 +1577,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@142",
+      "key": "[data-testid=song-index]@170",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -1333,7 +1586,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@143",
+      "key": "[data-testid=song-name]@171",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -1342,7 +1595,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@144",
+      "key": "[data-testid=song-artist]@172",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -1351,7 +1604,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@145",
+      "key": "[data-testid=song-album]@173",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -1360,7 +1613,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@146",
+      "key": "[data-testid=song-release]@174",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -1369,7 +1622,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@147",
+      "key": "[data-testid=song-duration]@175",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -1378,7 +1631,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@148",
+      "key": "[data-testid=song-key]@176",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@177",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@178",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -1396,7 +1667,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-index]@150",
+      "key": "[data-testid=song-index]@180",
       "tag": "td",
       "id": null,
       "testid": "song-index",
@@ -1405,7 +1676,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-name]@151",
+      "key": "[data-testid=song-name]@181",
       "tag": "td",
       "id": null,
       "testid": "song-name",
@@ -1414,7 +1685,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-artist]@152",
+      "key": "[data-testid=song-artist]@182",
       "tag": "td",
       "id": null,
       "testid": "song-artist",
@@ -1423,7 +1694,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-album]@153",
+      "key": "[data-testid=song-album]@183",
       "tag": "td",
       "id": null,
       "testid": "song-album",
@@ -1432,7 +1703,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-release]@154",
+      "key": "[data-testid=song-release]@184",
       "tag": "td",
       "id": null,
       "testid": "song-release",
@@ -1441,7 +1712,7 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-duration]@155",
+      "key": "[data-testid=song-duration]@185",
       "tag": "td",
       "id": null,
       "testid": "song-duration",
@@ -1450,7 +1721,25 @@
       "attrs": {}
     },
     {
-      "key": "[data-testid=song-added]@156",
+      "key": "[data-testid=song-key]@186",
+      "tag": "td",
+      "id": null,
+      "testid": "song-key",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-bpm]@187",
+      "tag": "td",
+      "id": null,
+      "testid": "song-bpm",
+      "text": "",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "[data-testid=song-added]@188",
       "tag": "td",
       "id": null,
       "testid": "song-added",
@@ -1467,6 +1756,35 @@
       "visible": false,
       "attrs": {
         "hidden": ""
+      }
+    },
+    {
+      "key": "#app-footer",
+      "tag": "footer",
+      "id": "app-footer",
+      "testid": null,
+      "text": null,
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#credit-getsongbpm",
+      "tag": "p",
+      "id": "credit-getsongbpm",
+      "testid": null,
+      "text": "Key and BPM data from GetSongBPM.",
+      "visible": true,
+      "attrs": {}
+    },
+    {
+      "key": "#link-getsongbpm",
+      "tag": "a",
+      "id": "link-getsongbpm",
+      "testid": "link-getsongbpm",
+      "text": "GetSongBPM",
+      "visible": true,
+      "attrs": {
+        "href": "https://getsongbpm.com"
       }
     }
   ]
