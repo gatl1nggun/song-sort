@@ -4,12 +4,13 @@
 // Auth is Authorization Code with PKCE, so no client secret is needed.
 // Only the user-library-read scope is requested.
 //
-// Key and BPM come from GetSongBPM through the local server (scan/serve.mjs),
-// which holds the API key. The page sends it only a song's title and artist.
+// Key and BPM come from ReccoBeats through the local server (scan/serve.mjs).
+// The page sends it only public Spotify track ids, never the Spotify token.
 
-const APP_VERSION = "v2";
+const APP_VERSION = "v3";
 const SCOPES = "user-library-read";
 const MAX_SONGS = 500; // keeps us well inside Development Mode quotas
+const LOOKUP_BATCH = 40; // ids per /api/songinfo call
 const STORAGE = {
   clientId: "songsorter.clientId",
   verifier: "songsorter.verifier",
@@ -51,7 +52,7 @@ function formatDuration(ms) {
   return `${m}:${s}`;
 }
 
-// GetSongBPM uses Open Key notation: "1m" (A minor) .. "12d". Minor keys sort
+// Keys use Open Key notation: "1m" (A minor) .. "12d". Minor keys sort
 // just before the major key on the same number, so wheel order is kept.
 function openKeyRank(openKey) {
   const m = /^(\d{1,2})([dm])$/i.exec(openKey || "");
@@ -228,16 +229,18 @@ async function fetchLikedSongs(token) {
   return songs.slice(0, MAX_SONGS);
 }
 
-// ---------- Key and BPM (GetSongBPM via local server) ----------
+// ---------- Key and BPM (ReccoBeats via local server) ----------
 
-async function fetchSongInfo(song) {
-  if (state.source === "demo") return song.demo_info; // offline, no network call
-  const params = new URLSearchParams({ title: song.name, artist: song.artist });
-  const res = await fetch(`/api/songinfo?${params}`);
+// Returns a Map of song id -> { key, open_key, tempo } or null when not found.
+async function fetchSongInfo(songs) {
+  if (state.source === "demo") {
+    return new Map(songs.map((song) => [song.id, song.demo_info])); // offline, no network call
+  }
+  const res = await fetch(`/api/songinfo?ids=${songs.map((s) => s.id).join(",")}`);
   if (res.status === 404) throw new Error("Key/BPM lookup needs the local server. Start it with npm run serve.");
   const body = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(body.error || `Key/BPM lookup failed (${res.status})`);
-  return body.found ? { key: body.key, open_key: body.open_key, tempo: body.tempo } : null;
+  return new Map(songs.map((song) => [song.id, body.results?.[song.id] ?? null]));
 }
 
 async function lookupKeys() {
@@ -251,12 +254,14 @@ async function lookupKeys() {
   $("btn-lookup").disabled = true;
   let found = 0;
   try {
-    for (const [i, song] of todo.entries()) {
-      const info = await fetchSongInfo(song);
-      state.info.set(song.id, info);
-      if (info) found++;
-      setStatus(`Looking up key and BPM... ${i + 1} of ${todo.length}`);
-      if ((i + 1) % 10 === 0) render();
+    for (let i = 0; i < todo.length; i += LOOKUP_BATCH) {
+      const batch = todo.slice(i, i + LOOKUP_BATCH);
+      for (const [id, info] of await fetchSongInfo(batch)) {
+        state.info.set(id, info);
+        if (info) found++;
+      }
+      setStatus(`Looking up key and BPM... ${Math.min(i + LOOKUP_BATCH, todo.length)} of ${todo.length}`);
+      render();
     }
     setStatus(`Key and BPM found for ${found} of ${todo.length} songs.`);
   } catch (err) {
