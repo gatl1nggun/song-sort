@@ -6,7 +6,7 @@
 // data reaches this server. ReccoBeats needs no API key.
 import http from "node:http";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { extname, join, normalize } from "node:path";
+import { extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
@@ -112,13 +112,15 @@ async function handleSongInfo(req, url, res) {
 }
 
 async function handleStatic(url, res) {
-  const path = normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, "");
-  // Never serve dotfiles (.cache, .git).
-  if (path.split(/[/\\]/).some((part) => part.startsWith("."))) {
+  let parts;
+  try { parts = decodeURIComponent(url.pathname).split("/").filter(Boolean); } catch { parts = null; }
+  // Never serve dotfiles (.cache, .git) or anything with a backslash or ".." in it.
+  if (!parts || parts.some((part) => part.startsWith(".") || part.includes("\\"))) {
     res.writeHead(404).end("Not found");
     return;
   }
-  const file = join(ROOT, path === "/" ? "index.html" : path);
+  // Split on "/" ourselves so this works the same on Windows and Linux.
+  const file = parts.length ? join(ROOT, ...parts) : join(ROOT, "index.html");
   try {
     const body = await readFile(file);
     res.writeHead(200, { "Content-Type": TYPES[extname(file)] || "application/octet-stream" });
